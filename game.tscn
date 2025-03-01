@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwifno7yakkyh"]
+
+[ext_resource type="PackedScene" uid="uid://bffwl3d1bs1bh" path="res://cannon.tscn" id="1_5pc3s"]
+[ext_resource type="PackedScene" uid="uid://bftm4dync3qdl" path="res://particle.tscn" id="2_kv56s"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Cannon" parent="." instance=ExtResource("1_5pc3s")]
+position = Vector2(385, 289)
+
+[node name="Particle" parent="." instance=ExtResource("2_kv56s")]
+z_index = 1
+z_as_relative = false
+position = Vector2(427, 299)
