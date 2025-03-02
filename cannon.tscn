@@ -1,14 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://bffwl3d1bs1bh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcd5r"]
-radius = 17.1172
+radius = 19.6469
 
 [node name="Cannon" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(125, -44, 38, -102, -47, -98, -109, -16, -89, 77, -3, 117, 115, 67, 415, 80, 390, 188, -106, 243, -277, 100, -126, -175, 35, -201, 230, -117, 442, -117, 435, -45)
+position = Vector2(-9, 20)
+polygon = PackedVector2Array(12, -226, -32, -223, -66, -215, -101, -201, -129, -181, -157, -150, -180, -111, -196, -60, -202, -5, -191, 48, -167, 94, -137, 130, -93, 164, -47, 182, 6, 191, 56, 190, 112, 177, 163, 153, 213, 117, 244, 12, 248, -79, 448, -62, 404, 169, -106, 243, -518, 45, -288, -329, 162, -304, 403, -226)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_rcd5r")

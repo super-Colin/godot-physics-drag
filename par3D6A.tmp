@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dovba76u65cbw"]
+
+[ext_resource type="PackedScene" uid="uid://bftm4dync3qdl" path="res://nucleus.tscn" id="1_8pkaw"]
+[ext_resource type="Script" path="res://particle.gd" id="1_atrnu"]
+[ext_resource type="PackedScene" uid="uid://b8lf6k6glgc45" path="res://electron.tscn" id="2_vk365"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqo27"]
+radius = 70.2567
+
+[node name="Particle" type="Node2D"]
+script = ExtResource("1_atrnu")
+
+[node name="Area2D" type="Area2D" parent="."]
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hqo27")
+debug_color = Color(0.845891, 0.316111, 0.537669, 0.42)
+
+[node name="Nucleus" parent="." instance=ExtResource("1_8pkaw")]
+
+[node name="Shell1" type="Node2D" parent="."]
+
+[node name="Electron" parent="Shell1" instance=ExtResource("2_vk365")]
+position = Vector2(-49, -22)
+
+[node name="Electron2" parent="Shell1" instance=ExtResource("2_vk365")]
+position = Vector2(46, 29)
