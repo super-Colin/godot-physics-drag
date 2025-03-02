@@ -21,6 +21,15 @@ func _ready() -> void:
 	if not isTarget:
 		Globals.particleRef = $'.'
 	%Nucleus.mass = weight
+	%Nucleus.body_entered.connect(handleCollision)
+
+
+#func handleCollision(rid, body, bodyIndex, shapeIndex):
+func handleCollision(body):
+	print("collision: ", body)
+	if "weight" in body:
+		print("weight : ", body.weight)
+
 
 func _physics_process(delta: float) -> void:
 	var pull = Vector2.ZERO
@@ -28,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		pull = %Nucleus.get_local_mouse_position().normalized().rotated(%Nucleus.rotation) * mousePull
 		#print("pulling - ", pull)
 		%Nucleus.apply_central_force(pull)
+	%Label.text = str(%Nucleus.linear_velocity)
 	
 	#for orbiter in $'.'.get_node("Shell1").get_children():
 		#var relPos = orbiter.position - %Nucleus.position

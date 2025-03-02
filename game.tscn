@@ -20,4 +20,4 @@ position = Vector2(620, 640)
 isTarget = false
 
 [node name="Particle2" parent="." instance=ExtResource("4_wutqv")]
-position = Vector2(727, 615)
+position = Vector2(771, 413)
