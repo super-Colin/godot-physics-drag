@@ -4,10 +4,10 @@ extends Node2D
 
 
 
+@export var weight = 0.1
 @export var isTarget = true
 
-@export var weight = 0.1
-var mousePull = 200.0
+var mousePull = 1000.0
 
 
 
@@ -26,9 +26,27 @@ func _ready() -> void:
 
 #func handleCollision(rid, body, bodyIndex, shapeIndex):
 func handleCollision(body):
+	if isTarget:
+		return
 	print("collision: ", body)
-	if "weight" in body:
-		print("weight : ", body.weight)
+	if "mass" in body:
+		#print("weight : ", body.mass)
+		if isEnoughForFusion(body):
+			print("bam!")
+			$'.'.queue_free()
+			body.get_parent().queue_free()
+
+
+func isEnoughForFusion(body:Node)->bool:
+	#var selfEnergy = %Nucleus.linear_velocity * %Nucleus.mass
+	var selfEnergy = abs(%Nucleus.linear_velocity.x) + abs(%Nucleus.linear_velocity.y) * %Nucleus.mass * 0.0001
+	#var otherEnergy = body.linear_velocity * body.mass
+	var otherEnergy = abs(body.linear_velocity.x) + abs(body.linear_velocity.y) * body.mass
+	print("selfEnergy: ", selfEnergy, ", otherEnergy: ", otherEnergy, ", requiredEnergyForFusion: ", body.requiredEnergyForFusion())
+	#if selfEnergy >= (%Nucleus.requiredEnergyForFusion() + body.requiredEnergyForFusion()):
+	if selfEnergy >= body.requiredEnergyForFusion():
+		return true
+	return false
 
 
 func _physics_process(delta: float) -> void:

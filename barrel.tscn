@@ -12,7 +12,7 @@ size = Vector2(501.875, 16)
 gravity_space_override = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="North"]
-position = Vector2(0, -57.25)
+position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_aq3h7")
 
 [node name="North2" type="Area2D" parent="."]
@@ -20,7 +20,7 @@ gravity_space_override = 3
 gravity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="North2"]
-position = Vector2(0, -29)
+position = Vector2(0, -38.75)
 shape = SubResource("RectangleShape2D_ods5d")
 
 [node name="South" type="Area2D" parent="."]
@@ -29,7 +29,7 @@ gravity_point_center = Vector2(0, -1)
 gravity_direction = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="South"]
-position = Vector2(0.125, 51)
+position = Vector2(0.125, 69)
 shape = SubResource("RectangleShape2D_aq3h7")
 
 [node name="South2" type="Area2D" parent="."]
@@ -39,5 +39,5 @@ gravity_direction = Vector2(0, -1)
 gravity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="South2"]
-position = Vector2(0.125, 23)
+position = Vector2(0.125, 41)
 shape = SubResource("RectangleShape2D_ods5d")

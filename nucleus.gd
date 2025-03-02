@@ -13,7 +13,12 @@ func _ready() -> void:
 	$'.'.mouse_exited.connect(_mouse_exited)
 
 
-
+func requiredEnergyForFusion():
+	#return %Nucleus.mass * %Nucleus.mass
+	#return (1 + %Nucleus.mass) * (1 + %Nucleus.mass) * (1 + %Nucleus.mass)
+	#return mass * mass * mass
+	return (1 + mass) * (1 + mass) * 100
+	#return mass * mass * 1000
 
 
 func _mouse_entered():
