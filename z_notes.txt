@@ -1,0 +1,21 @@
+3 time slots per week
+- potentially 3 experiments per week
+
+
+You make money off of the energy you produce
+- you start with a small solar farm, which supplies a small amount every week
+- Excess is sold off automatically
+You are expected to maintain a minimun energy output as you progress (city contracts?)
+
+
+Experiments cost energy to perform
+- heavier particles require more energy input
+- -- ? energy drains while dragging the particle?
+
+Upgrades cost money, produced by selling surplus energy
+- Battery (energy storage max)
+- Coils (mouse pull strength)
+- Solar (more energy income)
+
+Modifiers
+- Quark - adds random impulses to the atom, adds extra energy to the collision

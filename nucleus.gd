@@ -5,7 +5,11 @@ var beingDragged = false
 var hoveredOn = false
 
 
-
+func fuse(scaleUp):
+	$'.'.mass *= scaleUp
+	$Hitbox.scale *= scaleUp
+	$Icon.scale *= scaleUp
+	$FusionExplosion.emitting = true
 
 func _ready() -> void:
 	$'.'.set_pickable(true) # SUPER IMPORTANT!!! Mouse entered/exited won't trigger without this!

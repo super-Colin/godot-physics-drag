@@ -1,25 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwifno7yakkyh"]
+[gd_scene load_steps=5 format=3 uid="uid://bwifno7yakkyh"]
 
 [ext_resource type="PackedScene" uid="uid://bffwl3d1bs1bh" path="res://cannon.tscn" id="1_5pc3s"]
 [ext_resource type="PackedScene" uid="uid://cu1j8cej1pmx4" path="res://barrel.tscn" id="3_rsftv"]
+[ext_resource type="PackedScene" uid="uid://wx8qryyffkhy" path="res://chamber.tscn" id="4_wlflx"]
 [ext_resource type="PackedScene" uid="uid://dovba76u65cbw" path="res://particle.tscn" id="4_wutqv"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Cannon" parent="." instance=ExtResource("1_5pc3s")]
-position = Vector2(575, 536)
+position = Vector2(415, 536)
 
 [node name="MainCamera" type="Camera2D" parent="."]
 position = Vector2(962, 536)
 
 [node name="Barrel" parent="." instance=ExtResource("3_rsftv")]
-position = Vector2(1228, 358)
+position = Vector2(968, 358)
 
 [node name="Particle" parent="." instance=ExtResource("4_wutqv")]
-position = Vector2(620, 640)
+position = Vector2(460, 640)
 weight = 1.0
 isTarget = false
 
+[node name="Chamber" parent="." instance=ExtResource("4_wlflx")]
+position = Vector2(1506, 351)
+
 [node name="Particle2" parent="." instance=ExtResource("4_wutqv")]
-position = Vector2(1649, 364)
-weight = 1.0
+position = Vector2(1089, 169)

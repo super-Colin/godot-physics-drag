@@ -1,0 +1,272 @@
+[gd_scene load_steps=7 format=3 uid="uid://wx8qryyffkhy"]
+
+[ext_resource type="PackedScene" uid="uid://dovba76u65cbw" path="res://particle.tscn" id="1_4712i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd7g0"]
+size = Vector2(502, 155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wp3g"]
+size = Vector2(501.875, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l4l2"]
+size = Vector2(468.938, 47.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcexp"]
+size = Vector2(336, 9.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6x2m8"]
+radius = 69.5845
+
+[node name="Chamber" type="Node2D"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(-387, -115, -7, -324, 130, -299, 231, -240, 298, -145, 332, -4, 309, 116, 235, 220, 143, 293, -3, 327, -395, 110, -1, 519, 566, 3, -9, -505)
+
+[node name="MagnetBar" type="Node2D" parent="."]
+position = Vector2(0, -94)
+metadata/_edit_group_ = true
+
+[node name="North" type="Area2D" parent="MagnetBar"]
+gravity_space_override = 1
+gravity = 1200.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar/North"]
+position = Vector2(0, -155)
+shape = SubResource("RectangleShape2D_gd7g0")
+
+[node name="North2" type="Area2D" parent="MagnetBar"]
+gravity_space_override = 1
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar/North2"]
+position = Vector2(0, -36.5)
+shape = SubResource("RectangleShape2D_0wp3g")
+
+[node name="North3" type="Area2D" parent="MagnetBar"]
+gravity_space_override = 1
+gravity = 400.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar/North3"]
+position = Vector2(0, 27.6875)
+shape = SubResource("RectangleShape2D_8l4l2")
+
+[node name="North4" type="Area2D" parent="MagnetBar"]
+gravity_space_override = 1
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar/North4"]
+position = Vector2(0, 59)
+shape = SubResource("RectangleShape2D_kcexp")
+
+[node name="MagnetBar2" type="Node2D" parent="."]
+position = Vector2(89, 0)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="North" type="Area2D" parent="MagnetBar2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+gravity = 1200.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar2/North"]
+position = Vector2(0, -155)
+shape = SubResource("RectangleShape2D_gd7g0")
+
+[node name="North2" type="Area2D" parent="MagnetBar2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar2/North2"]
+position = Vector2(0, -36.5)
+shape = SubResource("RectangleShape2D_0wp3g")
+
+[node name="North3" type="Area2D" parent="MagnetBar2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+gravity = 400.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar2/North3"]
+position = Vector2(0, 27.6875)
+shape = SubResource("RectangleShape2D_8l4l2")
+
+[node name="North4" type="Area2D" parent="MagnetBar2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar2/North4"]
+position = Vector2(-2.57924e-05, 59)
+shape = SubResource("RectangleShape2D_kcexp")
+
+[node name="MagnetBar3" type="Node2D" parent="."]
+position = Vector2(0, 95)
+rotation = 3.14159
+metadata/_edit_group_ = true
+
+[node name="North" type="Area2D" parent="MagnetBar3"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 1200.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar3/North"]
+position = Vector2(0, -155)
+shape = SubResource("RectangleShape2D_gd7g0")
+
+[node name="North2" type="Area2D" parent="MagnetBar3"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar3/North2"]
+position = Vector2(0, -36.5)
+shape = SubResource("RectangleShape2D_0wp3g")
+
+[node name="North3" type="Area2D" parent="MagnetBar3"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 400.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar3/North3"]
+position = Vector2(0, 27.6875)
+shape = SubResource("RectangleShape2D_8l4l2")
+
+[node name="North4" type="Area2D" parent="MagnetBar3"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar3/North4"]
+position = Vector2(1.80632e-05, 59)
+shape = SubResource("RectangleShape2D_kcexp")
+
+[node name="MagnetBar4" type="Node2D" parent="."]
+position = Vector2(-90, 0)
+rotation = -1.5708
+metadata/_edit_group_ = true
+
+[node name="North" type="Area2D" parent="MagnetBar4"]
+gravity_space_override = 1
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+gravity = 1200.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar4/North"]
+position = Vector2(0, -155)
+shape = SubResource("RectangleShape2D_gd7g0")
+
+[node name="North2" type="Area2D" parent="MagnetBar4"]
+gravity_space_override = 1
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar4/North2"]
+position = Vector2(0, -36.5)
+shape = SubResource("RectangleShape2D_0wp3g")
+
+[node name="North3" type="Area2D" parent="MagnetBar4"]
+gravity_space_override = 1
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+gravity = 400.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar4/North3"]
+position = Vector2(0, 27.6875)
+shape = SubResource("RectangleShape2D_8l4l2")
+
+[node name="North4" type="Area2D" parent="MagnetBar4"]
+gravity_space_override = 1
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBar4/North4"]
+position = Vector2(0, 58.125)
+shape = SubResource("RectangleShape2D_kcexp")
+
+[node name="Area2D" type="Area2D" parent="."]
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 100.0
+linear_damp_space_override = 1
+linear_damp = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6x2m8")
+debug_color = Color(0.853005, 0.255267, 0.674191, 0.42)
+
+[node name="Particle" parent="." instance=ExtResource("1_4712i")]
+position = Vector2(1, 1)

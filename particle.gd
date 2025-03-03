@@ -4,10 +4,10 @@ extends Node2D
 
 
 
-@export var weight = 0.1
+@export var weight = 0.1 # only for setting in on ready, use %Nucleus.mass as the source of truth
 @export var isTarget = true
 
-var mousePull = 1000.0
+var mousePull = 2000.0
 
 
 
@@ -22,6 +22,7 @@ func _ready() -> void:
 		Globals.particleRef = $'.'
 	%Nucleus.mass = weight
 	%Nucleus.body_entered.connect(handleCollision)
+	$Nucleus/FusionExplosion.one_shot = true
 
 
 #func handleCollision(rid, body, bodyIndex, shapeIndex):
@@ -30,12 +31,17 @@ func handleCollision(body):
 		return
 	print("collision: ", body)
 	if "mass" in body:
-		#print("weight : ", body.mass)
+		#print("weight : ", body.mass, %Nucleus.mass)
 		if isEnoughForFusion(body):
 			print("bam!")
 			$'.'.queue_free()
-			body.get_parent().queue_free()
+			#body.get_parent().fuse()
+			body.fuse(1.5)
 
+#func fuse():
+	#$Nucleus/FusionExplosion.emitting = true
+	#$'.'.scale *= 2.0
+	#$Nucleus.scale *= 2.0
 
 func isEnoughForFusion(body:Node)->bool:
 	#var selfEnergy = %Nucleus.linear_velocity * %Nucleus.mass
