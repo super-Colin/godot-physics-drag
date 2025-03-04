@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu1j8cej1pmx4"]
+[gd_scene load_steps=5 format=3 uid="uid://cu1j8cej1pmx4"]
+
+[ext_resource type="PackedScene" uid="uid://dsnc5a0ypidha" path="res://magnet_bar.tscn" id="1_o1lmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3h7"]
 size = Vector2(501.875, 38.25)
@@ -6,9 +8,13 @@ size = Vector2(501.875, 38.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ods5d"]
 size = Vector2(501.875, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wujsy"]
+size = Vector2(200, 110)
+
 [node name="Barrel" type="Node2D"]
 
 [node name="North" type="Area2D" parent="."]
+visible = false
 gravity_space_override = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="North"]
@@ -16,6 +22,7 @@ position = Vector2(0, -67)
 shape = SubResource("RectangleShape2D_aq3h7")
 
 [node name="North2" type="Area2D" parent="."]
+visible = false
 gravity_space_override = 1
 gravity = 400.0
 
@@ -24,6 +31,7 @@ position = Vector2(0, -38.75)
 shape = SubResource("RectangleShape2D_ods5d")
 
 [node name="South" type="Area2D" parent="."]
+visible = false
 gravity_space_override = 1
 gravity_point_center = Vector2(0, -1)
 gravity_direction = Vector2(0, -1)
@@ -33,6 +41,7 @@ position = Vector2(0.125, 69)
 shape = SubResource("RectangleShape2D_aq3h7")
 
 [node name="South2" type="Area2D" parent="."]
+visible = false
 gravity_space_override = 1
 gravity_point_center = Vector2(0, -1)
 gravity_direction = Vector2(0, -1)
@@ -41,3 +50,15 @@ gravity = 400.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="South2"]
 position = Vector2(0.125, 41)
 shape = SubResource("RectangleShape2D_ods5d")
+
+[node name="MagnetBar" parent="." instance=ExtResource("1_o1lmg")]
+position = Vector2(0, -95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -151)
+shape = SubResource("RectangleShape2D_wujsy")
+
+[node name="MagnetBar2" parent="." instance=ExtResource("1_o1lmg")]
+position = Vector2(0, -207)
+rotation = 3.14159
+gravityVector = Vector2(0, 1)

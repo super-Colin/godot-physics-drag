@@ -1,15 +1,168 @@
-[gd_scene load_steps=2 format=3 uid="uid://bffwl3d1bs1bh"]
+[gd_scene load_steps=8 format=3 uid="uid://bffwl3d1bs1bh"]
+
+[ext_resource type="Script" path="res://cannon.gd" id="1_xl8tc"]
+[ext_resource type="PackedScene" uid="uid://dsnc5a0ypidha" path="res://magnet_bar.tscn" id="2_ygs7w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcd5r"]
 radius = 19.6469
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7yb5"]
+size = Vector2(500, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykrmu"]
+size = Vector2(500, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cru5q"]
+size = Vector2(450, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7htb"]
+size = Vector2(400, 25)
+
 [node name="Cannon" type="Node2D"]
+script = ExtResource("1_xl8tc")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="DonutBody" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DonutBody"]
 position = Vector2(-9, 20)
-polygon = PackedVector2Array(12, -226, -32, -223, -66, -215, -101, -201, -129, -181, -157, -150, -180, -111, -196, -60, -202, -5, -191, 48, -167, 94, -137, 130, -93, 164, -47, 182, 6, 191, 56, 190, 112, 177, 163, 153, 213, 117, 244, 12, 248, -79, 448, -62, 404, 169, -106, 243, -518, 45, -288, -329, 162, -304, 403, -226)
+polygon = PackedVector2Array(12, -226, -32, -223, -66, -215, -101, -201, -129, -181, -157, -150, -180, -111, -196, -60, -202, -5, -191, 48, -167, 94, -137, 130, -93, 164, -47, 182, 6, 191, 56, 190, 112, 177, 163, 153, 213, 117, 244, 12, 248, -79, 229, -116, 404, -116, 404, 169, -106, 243, -518, 45, -288, -329, 162, -304, 403, -226)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DonutBody"]
 shape = SubResource("CircleShape2D_rcd5r")
+
+[node name="StraightBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StraightBody"]
+position = Vector2(20, 0)
+polygon = PackedVector2Array(394, -209, -226, -209, -225, -96, 395, -98, 394, -19, -344, -27, -333, -286, 394, -284)
+
+[node name="ParticleSpawn" type="Marker2D" parent="."]
+position = Vector2(-54, -147)
+
+[node name="Line2D" type="Line2D" parent="ParticleSpawn"]
+points = PackedVector2Array(1, -1, 1314, -1)
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2(-1544, 0)
+
+[node name="MagnetBarTop" parent="Node2D" instance=ExtResource("2_ygs7w")]
+position = Vector2(617, -177)
+rotation = 3.14159
+
+[node name="MagnetBarBottom" parent="Node2D" instance=ExtResource("2_ygs7w")]
+position = Vector2(617, -124)
+gravityVector = Vector2(0, -1)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(609, -102)
+metadata/_edit_group_ = true
+
+[node name="Largest" type="Area2D" parent="Node2D2"]
+position = Vector2(0, 1)
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 1200.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D2/Largest"]
+position = Vector2(0, 266.667)
+shape = SubResource("RectangleShape2D_j7yb5")
+
+[node name="Large" type="Area2D" parent="Node2D2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D2/Large"]
+position = Vector2(0, 125)
+shape = SubResource("RectangleShape2D_ykrmu")
+
+[node name="Small" type="Area2D" parent="Node2D2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 400.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D2/Small"]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_cru5q")
+
+[node name="Smallest" type="Area2D" parent="Node2D2"]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D2/Smallest"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_s7htb")
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(609, -198)
+rotation = 3.14159
+metadata/_edit_group_ = true
+
+[node name="Largest" type="Area2D" parent="Node2D3"]
+position = Vector2(0, 1)
+gravity_space_override = 1
+gravity = 1200.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D3/Largest"]
+position = Vector2(0, 266.667)
+shape = SubResource("RectangleShape2D_j7yb5")
+
+[node name="Large" type="Area2D" parent="Node2D3"]
+gravity_space_override = 1
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D3/Large"]
+position = Vector2(0, 125)
+shape = SubResource("RectangleShape2D_ykrmu")
+
+[node name="Small" type="Area2D" parent="Node2D3"]
+gravity_space_override = 1
+gravity = 400.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D3/Small"]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_cru5q")
+
+[node name="Smallest" type="Area2D" parent="Node2D3"]
+gravity_space_override = 1
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 2.0
+angular_damp_space_override = 3
+angular_damp = 0.2
+
+[node name="Bar" type="CollisionShape2D" parent="Node2D3/Smallest"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_s7htb")

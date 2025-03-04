@@ -32,7 +32,6 @@ color = Color(1, 0.129412, 1, 1)
 color_ramp = SubResource("GradientTexture1D_w1dwr")
 
 [node name="Particle" type="RigidBody2D"]
-mass = 0.1
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_6wc5g")

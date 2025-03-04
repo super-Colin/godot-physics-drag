@@ -4,10 +4,10 @@ extends Node2D
 
 
 
-@export var weight = 0.1 # only for setting in on ready, use %Nucleus.mass as the source of truth
+@export var weight = 1.0 # only for setting in on ready, use %Nucleus.mass as the source of truth
 @export var isTarget = true
 
-var mousePull = 2000.0
+var mousePull = 1200.0
 
 
 
@@ -22,34 +22,33 @@ func _ready() -> void:
 		Globals.particleRef = $'.'
 	%Nucleus.mass = weight
 	%Nucleus.body_entered.connect(handleCollision)
+	%Nucleus.fused.connect(calcGeneratedEnergy)
 	$Nucleus/FusionExplosion.one_shot = true
 
+
+
+func calcGeneratedEnergy():
+	EnergyBank.addGeneratedEnergy(calcSelfEnergy())
 
 #func handleCollision(rid, body, bodyIndex, shapeIndex):
 func handleCollision(body):
 	if isTarget:
 		return
-	print("collision: ", body)
 	if "mass" in body:
 		#print("weight : ", body.mass, %Nucleus.mass)
 		if isEnoughForFusion(body):
-			print("bam!")
 			$'.'.queue_free()
 			#body.get_parent().fuse()
 			body.fuse(1.5)
 
-#func fuse():
-	#$Nucleus/FusionExplosion.emitting = true
-	#$'.'.scale *= 2.0
-	#$Nucleus.scale *= 2.0
+
+
+func calcSelfEnergy():
+	return abs(%Nucleus.linear_velocity.x) + abs(%Nucleus.linear_velocity.y) * %Nucleus.mass * 0.0001
+
 
 func isEnoughForFusion(body:Node)->bool:
-	#var selfEnergy = %Nucleus.linear_velocity * %Nucleus.mass
-	var selfEnergy = abs(%Nucleus.linear_velocity.x) + abs(%Nucleus.linear_velocity.y) * %Nucleus.mass * 0.0001
-	#var otherEnergy = body.linear_velocity * body.mass
-	var otherEnergy = abs(body.linear_velocity.x) + abs(body.linear_velocity.y) * body.mass
-	print("selfEnergy: ", selfEnergy, ", otherEnergy: ", otherEnergy, ", requiredEnergyForFusion: ", body.requiredEnergyForFusion())
-	#if selfEnergy >= (%Nucleus.requiredEnergyForFusion() + body.requiredEnergyForFusion()):
+	var selfEnergy = calcSelfEnergy()
 	if selfEnergy >= body.requiredEnergyForFusion():
 		return true
 	return false
@@ -58,20 +57,16 @@ func isEnoughForFusion(body:Node)->bool:
 func _physics_process(delta: float) -> void:
 	var pull = Vector2.ZERO
 	if %Nucleus.beingDragged:
-		pull = %Nucleus.get_local_mouse_position().normalized().rotated(%Nucleus.rotation) * mousePull
+		tryDragging()
+	%Label.text = str(%Nucleus.linear_velocity)
+
+
+
+func tryDragging():
+	if EnergyBank.useEnergyDragging():
+		var pull = %Nucleus.get_local_mouse_position().normalized().rotated(%Nucleus.rotation) * mousePull
 		#print("pulling - ", pull)
 		%Nucleus.apply_central_force(pull)
-	%Label.text = str(%Nucleus.linear_velocity)
-	
-	#for orbiter in $'.'.get_node("Shell1").get_children():
-		#var relPos = orbiter.position - %Nucleus.position
-		##var orbitalForce = (orbiter.position - %Nucleus.position) / (pow(orbiter.position.distance_to(%Nucleus.position), 2))
-		##var orbitalForce = relPos.normalized().rotated(%Nucleus.rotation) * -100.0
-		##var orbitalForce = relPos.normalized().rotated(PI/4) * -50.0 
-		#var orbitalForce = relPos.normalized() * -50.0 
-		#orbitalForce = orbitalForce / (pow(orbiter.position.distance_to(%Nucleus.position), 2)) * 100.0 
-		##print("orbitalForce: ", orbitalForce)
-		#orbiter.apply_central_force(orbitalForce)
 
 
 func _input(event: InputEvent) -> void:

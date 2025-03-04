@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmvu6ksfq182w"]
+
+[ext_resource type="Script" path="res://control_bar.gd" id="1_unai8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33g6b"]
+bg_color = Color(0.238748, 0.0391257, 0.100116, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05f1i"]
+bg_color = Color(0.819608, 0.760784, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxuv2"]
+bg_color = Color(0.223529, 0.760784, 0.0980392, 1)
+
+[node name="ControlBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_unai8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reserve
+"
+
+[node name="ReservesBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_33g6b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_05f1i")
+max_value = 1000.0
+step = 0.1
+value = 1000.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Reset" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Generated
+"
+
+[node name="GeneratedBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 100)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_33g6b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hxuv2")
+max_value = 1000.0
+step = 0.1
+value = 150.0
+fill_mode = 3
+show_percentage = false
